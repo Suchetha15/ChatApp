@@ -22,7 +22,7 @@ class App extends Component {
     }
 
     componentWillMount(){
-        this.socket = io();
+        this.socket = io(window.location.hostname);
         this.socket.on('connect', this.connect.bind(this));
         this.socket.on('disconnect', this.disconnect.bind(this));
         this.socket.on('messageAdded', this.onMessageAdded.bind(this));
