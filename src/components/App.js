@@ -6,6 +6,7 @@ import MessageForm from './messages/MessageForm';
 //import UserForm from './users/UserForm';
 import UserList from './users/UserList';
 import UserForm from './users/UserForm';
+import moment from 'moment';
 
 class App extends Component {
     constructor(props){
@@ -32,6 +33,9 @@ class App extends Component {
     connect(){
         this.setState({status: 'connected'});
         console.log('Connected: ' + this.socket.id);
+        var currentTime = new moment();
+        currentTime = currentTime.format("HH:mm:ss");
+        console.log(currentTime);
     }
     
     onMessageAdded(message){
