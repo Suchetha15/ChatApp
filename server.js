@@ -1,11 +1,14 @@
 const path = require('path');
 const express = require('express');
 const app = express();
+var http = require('http').Server(app);
 const publicPath = path.join(__dirname,'public')
 
 var connections = [];
 var users = [];
-
+http.listen(3000, '0.0.0.0', function() {
+    console.log('Listening to port:  ' + 3000);
+});
 const port = process.env.PORT || 3000;
 var server = app.listen(port);
 app.use(express.static(publicPath));
