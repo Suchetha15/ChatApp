@@ -9,7 +9,7 @@ var users = [];
 const port = process.env.PORT || 3000;
 var server = app.listen(port);
 app.use(express.static(publicPath));
-
+//const io = socketIO(server);
 app.get('*', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html'));
 });

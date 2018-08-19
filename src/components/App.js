@@ -20,9 +20,9 @@ class App extends Component {
             user: ''
         }
     }
-
+//window.location.hostname
     componentWillMount(){
-        this.socket = io(window.location.hostname);
+        this.socket = io();
         this.socket.on('connect', this.connect.bind(this));
         this.socket.on('disconnect', this.disconnect.bind(this));
         this.socket.on('messageAdded', this.onMessageAdded.bind(this));
