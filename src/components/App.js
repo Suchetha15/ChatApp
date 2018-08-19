@@ -22,7 +22,7 @@ class App extends Component {
     }
 
     componentWillMount(){
-        this.socket = io('https://mysimple-chat-app.herokuapp.com/');
+        this.socket = io();
         this.socket.on('connect', this.connect.bind(this));
         this.socket.on('disconnect', this.disconnect.bind(this));
         this.socket.on('messageAdded', this.onMessageAdded.bind(this));
