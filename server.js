@@ -10,9 +10,9 @@ const port = process.env.PORT || 3000;
 var server = app.listen(port);
 app.use(express.static(publicPath));
 
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(publicPath, 'index.html'));
-// });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(publicPath, 'index.html'));
+});
 
 var io = require('socket.io').listen(server);
 
