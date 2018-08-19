@@ -1,12 +1,12 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-var http = require('http').Server(app);
+var https = require('https').Server(app);
 const publicPath = path.join(__dirname,'public')
 
 var connections = [];
 var users = [];
-http.listen(3000, '0.0.0.0', function() {
+https.listen(3000, '0.0.0.0', function() {
     console.log('Listening to port:  ' + 3000);
 });
 const port = process.env.PORT || 3000;
@@ -17,7 +17,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html'));
 });
 
-var io = require('socket.io').listen(server);
+var io = require('socket.io')(https).listen(server);
 
 io.sockets.on('connection', function(socket){
 
