@@ -9,19 +9,34 @@ import UserForm from './users/UserForm';
 import moment from 'moment';
 
 class App extends Component {
-    constructor(props){
+    // constructor(props){
+    //     super(props);
+    //     this.state = {
+    //         status: 'disconnected',
+    //         messages: [{
+    //             timeStamp: Date.now(),
+    //             text: "Welcome to SockChat"
+    //         }],
+    //         users: [],
+    //         user: ''
+    //     }
+    // }
+        constructor(props){
         super(props);
+        var cTime = new moment();
+        cTime = cTime.format("HH:mm:ss");
         this.state = {
             status: 'disconnected',
             messages: [{
-                timeStamp: Date.now(),
+                timeStamp: cTime,
                 text: "Welcome to SockChat"
             }],
             users: [],
             user: ''
         }
     }
-//window.location.hostname
+
+
     componentWillMount(){
         this.socket = io();
         this.socket.on('connect', this.connect.bind(this));
@@ -33,9 +48,6 @@ class App extends Component {
     connect(){
         this.setState({status: 'connected'});
         console.log('Connected: ' + this.socket.id);
-        var currentTime = new moment();
-        currentTime = currentTime.format("HH:mm:ss");
-        console.log(currentTime);
     }
     
     onMessageAdded(message){

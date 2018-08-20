@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import Message from './Message';
+import moment from 'moment';
 
 class MessageForm extends Component {
     render() {
@@ -14,8 +14,10 @@ class MessageForm extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+        var cTime = new moment();
+        cTime = cTime.format("HH:mm:ss");
         this.props.emit('messageAdded', {
-            timeStamp: Date.now(),
+            timeStamp: cTime,
             text: this.refs.text.value.trim(),
             user: this.props.user.name
         });

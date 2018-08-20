@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 
 
 class Message extends Component {
     render() {
         const {message} = this.props;
-        
-        var formattedTime = this.formatTime(message.timeStamp);
+        //var formattedTime = this.formatTime(message.timeStamp);
         return (
             <div className="message">
                 <strong>{message.user}</strong>
 
-               {formattedTime} - {message.text}
+               {message.timeStamp} - {message.text}
             </div>
            
         );
@@ -21,9 +19,6 @@ class Message extends Component {
         var hrs = dt.getHours();
         var mins = dt.getMinutes();
         var seconds = dt.getSeconds();
-        var currentTime = new moment();
-        currentTime = currentTime.format("HH:mm:ss");
-        console.log(currentTime);
 
         if(hrs < 10){
             hrs = '0' + hrs;

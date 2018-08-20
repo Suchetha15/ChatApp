@@ -1,23 +1,14 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-var https = require('https').Server(app);
-// var test = https.createServer();
-// test.listen(3000, '192.168.0.100', function() {
-//     console.log('Listening to port:  ' + 3000);
-// });
 const publicPath = path.join(__dirname,'public')
 
 var connections = [];
 var users = [];
-// https.listen(3000, '0.0.0.0', function() {
-//     console.log('Listening to port:  ' + 3000);
-// });
+
 const port = process.env.PORT || 3000;
 var server = app.listen(port);
 app.use(express.static(publicPath));
-//const io = socketIO(server);
-
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html'));
